@@ -18,8 +18,8 @@ after_success:
 
 branches:
   only:
-    - centos7*
-    - centos6*
+    - /^centos7-.*$/
+    - /^centos6-.*$/
   except:
     - /^testing-.*$/
     - master
