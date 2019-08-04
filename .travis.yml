@@ -7,6 +7,6 @@ before_install:
   - sudo apt-get install -y docker-ce
 
 script:
-  - docker build -t centos7 .
-  - docker run -d --privileged --name test centos7
-  - docker exec --tty centos7 ansible --version
+  - docker build -t centos .
+  - docker run -d --privileged --name centos centos7
+  - docker exec --tty centos ansible --version
