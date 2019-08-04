@@ -13,5 +13,5 @@ script:
 
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker tag centos7:latest $DOCKER_USERNAME/docker-ansible:latest
-  - docker push $DOCKER_USERNAME/docker-ansible:latest
+  - docker tag centos7:latest $DOCKER_USERNAME/docker-ansible:centos7-latest
+  - docker push $DOCKER_USERNAME/docker-ansible:centos7-latest
