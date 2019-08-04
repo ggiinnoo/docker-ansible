@@ -1,8 +1,6 @@
 FROM centos:7
 LABEL maintainer="Gino Jansen"
 
-ENV packages "ansible molecule docker yamllint ansible-lint flake8 testinfra"
-
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
 rm -f /lib/systemd/system/multi-user.target.wants/*;\
@@ -21,7 +19,9 @@ RUN yum -y update \
 	@development \
  	&& yum clean all
 
-RUN pip install $packages
+ENV packages "ansible yamllint ansible-lint flake8 testinfra molecule"
+RUN pip install --upgrade setuptools \
+	&& pip install $packages
 
 RUN mkdir -p /etc/ansible
 RUN echo -e '[local]\nlocalhost ansible_connection=local' > /etc/ansible/hosts
