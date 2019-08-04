@@ -1,2 +1,2 @@
-centos 7 images
+centos 7 testing image
 ====

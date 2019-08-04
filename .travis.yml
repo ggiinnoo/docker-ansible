@@ -13,13 +13,13 @@ script:
 
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker tag centos7:latest $DOCKER_USERNAME/docker-ansible:centos7-latest
-  - docker push $DOCKER_USERNAME/docker-ansible:centos7-latest
+  - docker tag centos7:latest $DOCKER_USERNAME/docker-ansible:centos7-testing-latest
+  - docker push $DOCKER_USERNAME/docker-ansible:centos7-testing-latest
 
 branches:
   only:
-    - centos7
-    - centos6
+    - centos7*
+    - centos6*
   except:
     - /^testing-.*$/
     - master

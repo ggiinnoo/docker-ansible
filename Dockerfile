@@ -1,7 +1,7 @@
 FROM centos:7
 LABEL maintainer="Gino Jansen"
 
-ENV packages "ansible"
+ENV packages "ansible molecule docker yamllint ansible-lint flake8 testinfra"
 
 RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == \
 systemd-tmpfiles-setup.service ] || rm -f $i; done); \
