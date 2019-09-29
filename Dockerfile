@@ -16,6 +16,7 @@ rm -f /lib/systemd/system/anaconda.target.wants/*;
 RUN yum -y update \
 	&& yum -y install epel-release \
 	&& yum -y install \
+	sudo \
 	python-pip \
 	python-devel \
 	@development \
