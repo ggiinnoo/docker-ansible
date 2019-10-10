@@ -1,2 +1,2 @@
-centos 6 image
+centos 8 image
 ====

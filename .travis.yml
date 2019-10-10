@@ -7,19 +7,20 @@ before_install:
   - sudo apt-get install -y docker-ce
 
 script:
-  - docker build -t centos6:latest .
-  - docker run -d --privileged --name centos centos6:latest
+  - docker build -t centos8:latest .
+  - docker run -d --privileged --name centos centos8:latest
   - docker exec --tty centos ansible --version
 
 after_success:
   - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-  - docker tag centos6:latest $DOCKER_USERNAME/docker-ansible:centos6-latest
-  - docker push $DOCKER_USERNAME/docker-ansible:centos6-latest
+  - docker tag centos8:latest $DOCKER_USERNAME/docker-ansible:centos8-latest
+  - docker push $DOCKER_USERNAME/docker-ansible:centos8-latest
 
 branches:
   only:
-    - centos7
     - centos6
+    - centos7
+    - centos8
   except:
     - /^testing-.*$/
     - master
