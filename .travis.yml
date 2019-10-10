@@ -8,7 +8,7 @@ before_install:
 
 script:
   - docker build -t centos6:latest .
-  - docker run -d --privileged --name centos centos7:latest
+  - docker run -d --privileged --name centos centos6:latest
   - docker exec --tty centos ansible --version
 
 after_success:
