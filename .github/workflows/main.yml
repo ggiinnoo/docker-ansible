@@ -26,7 +26,7 @@ jobs:
       - name: Docker image push
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          name: docker-ansible/centos8:latest
+          name: ggiinnoo/docker-ansible/centos8:latest
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: docker.pkg.github.com
