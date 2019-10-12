@@ -1,0 +1,33 @@
+---
+name: Docker Image CI
+
+on:
+  push:
+    branches:
+      - 'centos6'
+      - 'centos7'
+      - 'centos8'
+
+jobs:
+  build:
+    name: Build image for ansible role testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - name: Docker image build
+        run: docker build -t centos8:latest .
+      - name: Docker image test
+        run: |
+          docker run -d --privileged --name centos centos8:latest
+          docker exec --tty centos ansible --version
+      - name: Docker image push
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: docker-ansible/centos8:latest
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: docker.pkg.github.com
+        if: success()
